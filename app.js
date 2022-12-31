@@ -1,18 +1,33 @@
 
 
 
-let myLeads = [1,2,3,4,5,6,7]
+let myLeads = []
 const inputEl = document.getElementById('input-el')
 const ulEl = document.getElementById('ul-el')
 const inputBTN = document.getElementById('input-btn')
 
+localStorage.seItem("myLeads", "")
+
 
 inputBTN.addEventListener('click', () => {
   myLeads.push(inputEl.value)
-  console.log(myLeads)
+  inputEl.value = ' '
+  renderLeads()
 })
 
 
+function renderLeads() {
+let listItems = ""
 for(let i = 0; i < myLeads.length; i++){
-  ulEl.textContent += myLeads[i]+ ' '
+  listItems +=
+    `<li>
+      <a target='_blank' href='${myLeads[i]}'> 
+      ${myLeads[i]}
+      </a>
+    </li>`
+
+
+  
+}
+ulEl.innerHTML = listItems
 }
